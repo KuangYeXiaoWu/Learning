@@ -1,17 +1,30 @@
 ﻿# define _CRT_SECURE_NO_WARNINGS
 # include <stdio.h>
-int add(int x, int y) {
+//用double类型
+double add(double x, double y) {
 	return x + y;
 }
-int sub(int x, int y) {
+double sub(double x, double y) {
 	return x - y;
 }
-int mul(int x, int y) {
+double mul(double x, double y) {
 	return x * y;
 }
-int div(int x, int y) {
+double div3(double x, double y) {
 	return x / y;
 }
+//int add(int x, int y) {
+//	return x + y;
+//}
+//int sub(int x, int y) {
+//	return x - y;
+//}
+//int mul(int x, int y) {
+//	return x * y;
+//}
+//int div(int x, int y) {
+//	return x / y;
+//}
 void menu() {
 	printf("***************************************\n");
 	printf("******     旷野小屋——计算器    ******\n");
@@ -21,8 +34,18 @@ void menu() {
 	printf("******         0：退出           ******\n");
 	printf("***************************************\n");
 }
-//用回调函数实现：
-
+//用回调函数实现double：
+void hd(double(*pr)(double, double)) {
+	double x = 0;
+	double y = 0;
+	printf("请输入第一个数：");
+	scanf("%lf", &x);
+	printf("\n");
+	printf("请输入第二个数：");
+	scanf("%lf", &y);
+	printf("\n");
+	printf("计算结果为：%lf\n",pr(x, y));
+}
 int main() {
 	int input = 0;
 	do {
@@ -31,6 +54,7 @@ int main() {
 		scanf("%d", &input);
 		switch (input) {
 			case 0:
+				printf("已经退出系统！！！");
 				break;
 			case 1:
 				hd(add);
@@ -42,7 +66,7 @@ int main() {
 				hd(mul);
 				break;
 			case 4:
-				hd(div);
+				hd(div3);
 				break;
 			default:
 				printf("输入错误，请重新输入\n");
